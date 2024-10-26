@@ -17,7 +17,7 @@ def count_words(subreddit, word_list, after="", count=[]):
     request = requests.get(url,
                            params={'after': after},
                            allow_redirects=False,
-                           headers={'User-Agent': 'Reddit-Keywords-checker/1.0'})
+                           headers={'User-Agent': 'Reddit-Keywordchecker/1.0'})
 
     if request.status_code == 200:
         data = request.json()
