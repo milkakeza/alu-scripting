@@ -10,7 +10,7 @@ def number_of_subscribers(subreddit):
     number of subscribers
     """
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-    headers = {"User-Agent": "reddit-subscriber-checker/1.0"}  # avoid Too Many Requests error
+    headers = {"User-Agent": "reddit-subscriber-checker/1.0"}
 
     response = requests.get(url, headers=headers, allow_redirects=False)
 
