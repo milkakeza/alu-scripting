@@ -4,21 +4,18 @@ function that queries the 'Reddit API' and returns the number of subscribers
 """
 import requests
 
+
 def number_of_subscribers(subreddit):
     """
-    number count of subscribers
+    number of subscribers
     """
-    url= "https://reddit.com/r/{programmerHumor}/about.json"
-    headers = {"User-Agent": "reddit-subscriber-checker/1.0 (by u/Beautiful_Bird9169)"}
+    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
+    headers = {"User-Agent": "Mozilla/5.0"}  # avoid Too Many Requests error
 
-    try:
-        response = requests.get(url, headers=headers, allow_redirects=False)
-        if response.status_code == 200:
-            data = response.json()
-            return data['data'].get('subscribers', 0)
-        else:
-            return 0
-    
-    except Exception as e:
-        print(f"An error occurred: {e}")
+    response = requests.get(url, headers=headers, allow_redirects=False)
+
+    if response.status_code == 200:
+        data = response.json()
+        return data['data']['subscribers']
+    else:
         return 0
